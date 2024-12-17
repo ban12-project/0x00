@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictBindCallApply": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "target": "ES6",
+    "noEmitOnError": true,
+    "downlevelIteration": true,
+    "incremental": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "0x00",
+  "description": "A JavaScript Binary Data Handling Library",
+  "keywords": [
+    "binary PLIST",
+    "exif",
+    "Apple MakerNotes"
+  ],
+  "author": "Coda <o4oban@gmail.com>",
+  "license": "MIT",
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "check-types": "turbo check-types",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@swc/cli": "^0.5.2",
+    "@swc/core": "^1.10.1",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,md}": "prettier --write"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "trailingComma": "all",
+    "singleQuote": true,
+    "semi": false,
+    "importOrder": [
+      "<BUILTIN_MODULES>",
+      "<THIRD_PARTY_MODULES>",
+      "",
+      "^types$",
+      "",
+      "^[./]"
+    ],
+    "importOrderParserPlugins": [
+      "typescript",
+      "decorators-legacy"
+    ],
+    "plugins": [
+      "@ianvs/prettier-plugin-sort-imports",
+      "prettier-plugin-tailwindcss"
+    ]
+  },
+  "dependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-turbo": "^2.3.3",
+    "typescript-eslint": "^8.18.1"
+  }
+}

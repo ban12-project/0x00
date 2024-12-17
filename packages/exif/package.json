@@ -1,0 +1,33 @@
+{
+  "name": "@ban12/exif",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A parser for EXIF",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ban12-project/0x00.git",
+    "directory": "packages/exif"
+  },
+  "sideEffects": false,
+  "main": "dist/exif.js",
+  "module": "dist/exif.mjs",
+  "types": "dist/exif.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "rm -rf dist && pnpm build:cjs && pnpm build:esm && pnpm build:tsc",
+    "build:cjs": "swc src/exif.ts -o dist/exif.js -C module.type=commonjs",
+    "build:esm": "swc src/exif.ts -o dist/exif.mjs -C module.type=es6",
+    "build:tsc": "tsc --emitDeclarationOnly --outDir dist/",
+    "preview": "vite preview",
+    "test": "vitest",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ban12/bplist-parser": "workspace:*"
+  }
+}

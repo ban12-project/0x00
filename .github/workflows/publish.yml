@@ -1,0 +1,72 @@
+name: Publish Package
+
+on:
+  push:
+    tags:
+      - '**@*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type check
+        run: pnpm check-types
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Extract package name from tag
+        id: extract
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          PACKAGE_NAME=${TAG_NAME%@*}
+          VERSION=${TAG_NAME##*@}
+          echo "package=$PACKAGE_NAME" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Publish package
+        run: |
+          PACKAGE_NAME=${{ steps.extract.outputs.package }}
+          PACKAGE_PATH="packages/${PACKAGE_NAME#@*/}"
+          if [ -f "$PACKAGE_PATH/package.json" ]; then
+            echo "Publishing $PACKAGE_NAME..."
+            cd "$PACKAGE_PATH"
+            pnpm publish --access public --no-git-checks
+          else
+            echo "Package $PACKAGE_NAME not found at $PACKAGE_PATH"
+            exit 1
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
