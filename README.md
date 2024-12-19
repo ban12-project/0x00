@@ -1,5 +1,12 @@
 # 0x00 - A JavaScript Binary Data Handling Library
 
+<a aria-label="License" href="https://github.com/vercel/style-guide/blob/canary/LICENSE.md">
+  <img alt="" src="https://img.shields.io/npm/l/@ban12/bplist-parser.svg?style=flat-square&labelColor=000000">
+</a>
+<a aria-label="CI status" href="https://github.com/ban12-project/0x00/actions/workflows/ci.yml?query=event%3Apush+branch%3Amain">
+  <img alt="" src="https://img.shields.io/github/actions/workflow/status/ban12-project/0x00/ci.yml?event=push&branch=main&style=flat-square&labelColor=000000">
+</a>
+
 **0x00** is a lightweight JavaScript library designed for handling binary data. It provides an API for reading, writing, and manipulating binary data in both Node.js and browser environments. Here's an overview of its features, usage, and benefits:
 
 ## Key Features
