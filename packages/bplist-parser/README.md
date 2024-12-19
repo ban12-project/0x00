@@ -1,3 +1,12 @@
+# @ban12/bplist-parser
+
+<a aria-label="NPM version" href="https://www.npmjs.com/package/@ban12/bplist-parser">
+  <img alt="" src="https://img.shields.io/npm/v/@ban12/bplist-parser.svg?style=flat-square&labelColor=000000">
+</a>
+<a aria-label="NPM Unpacked Size (with version)" href="https://www.npmjs.com/package/@ban12/bplist-parser">
+  <img alt="" src="https://img.shields.io/npm/unpacked-size/@ban12/bplist-parser/latest?label=npm&style=flat-square&labelColor=000000">
+</a>
+
 ## Install
 
 ```bash
