@@ -14,6 +14,9 @@
     "node": ">=20"
   },
   "packageManager": "pnpm@9.15.0",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -21,9 +24,15 @@
     "check-types": "turbo check-types",
     "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "ci:version": "changeset version",
+    "ci:release": "changeset publish"
+  },
+  "bugs": {
+    "url": "https://github.com/o4oban/0x00/issues"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.11",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@swc/cli": "^0.5.2",
     "@swc/core": "^1.10.1",
