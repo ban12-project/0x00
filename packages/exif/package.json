@@ -4,10 +4,16 @@
   "version": "0.0.0",
   "description": "A parser for EXIF",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ban12-project/0x00.git",
     "directory": "packages/exif"
+  },
+  "bugs": {
+    "url": "https://github.com/ban12-project/0x00/issues"
   },
   "sideEffects": false,
   "main": "dist/exif.js",
@@ -25,7 +31,7 @@
     "build:tsc": "tsc --emitDeclarationOnly --outDir dist/",
     "preview": "vite preview",
     "test": "vitest",
-    "check-types": "tsc --noEmit"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@ban12/bplist-parser": "workspace:*"
