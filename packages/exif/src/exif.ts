@@ -1,4 +1,4 @@
-import { parseBuffer } from '@ban12/bplist-parser/bplist-parser.js'
+import { parseBuffer } from '@ban12/bplist-parser'
 
 /**  For further details, see the pages 25 and 26 of the https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf */
 enum IFDTagType {
