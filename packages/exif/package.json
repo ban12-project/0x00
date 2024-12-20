@@ -1,7 +1,7 @@
 {
   "name": "@ban12/exif",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A parser for EXIF",
   "license": "MIT",
   "repository": {
