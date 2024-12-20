@@ -25,7 +25,7 @@
     "build:tsc": "tsc --emitDeclarationOnly --outDir dist/",
     "preview": "vite preview",
     "test": "vitest",
-    "check-types": "tsc --noEmit"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@ban12/bplist-parser": "workspace:*"

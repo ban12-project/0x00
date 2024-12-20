@@ -1,11 +1,6 @@
 {
   "name": "0x00",
   "description": "A JavaScript Binary Data Handling Library",
-  "keywords": [
-    "binary PLIST",
-    "exif",
-    "Apple MakerNotes"
-  ],
   "author": "Coda <o4oban@gmail.com>",
   "license": "MIT",
   "version": "0.0.1",
@@ -21,7 +16,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "test": "turbo test",
-    "check-types": "turbo check-types",
+    "type-check": "turbo type-check",
     "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
