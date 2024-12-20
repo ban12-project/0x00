@@ -2,16 +2,34 @@
   "name": "@ban12/bplist-parser",
   "version": "0.0.0",
   "description": "A parser for binary PLIST",
+  "keywords": [
+    "PLIST",
+    "binary PLIST parser",
+    "ban12"
+  ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ban12-project/0x00.git",
     "directory": "packages/bplist-parser"
   },
+  "bugs": {
+    "url": "https://github.com/ban12-project/0x00/issues"
+  },
   "sideEffects": false,
   "main": "dist/bplist-parser.js",
   "module": "dist/bplist-parser.mjs",
   "types": "dist/bplist-parser.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/bplist-parser.d.ts",
+      "import": "./dist/bplist-parser.mjs",
+      "require": "./dist/bplist-parser.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -22,6 +40,6 @@
     "build:esm": "swc bplist-parser.ts -o dist/bplist-parser.mjs -C module.type=es6",
     "build:tsc": "tsc --emitDeclarationOnly --outDir dist",
     "test": "vitest",
-    "check-types": "tsc --noEmit"
+    "type-check": "tsc --noEmit"
   }
 }
