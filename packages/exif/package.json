@@ -19,6 +19,13 @@
   "main": "dist/exif.js",
   "module": "dist/exif.mjs",
   "types": "dist/exif.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/exif.d.ts",
+      "import": "./dist/exif.mjs",
+      "require": "./dist/exif.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -34,6 +41,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@ban12/bplist-parser": "workspace:*"
+    "@ban12/bplist-parser": "^0.0.1"
   }
 }
