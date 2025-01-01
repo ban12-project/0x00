@@ -72,8 +72,8 @@ importers:
   packages/exif:
     dependencies:
       '@ban12/bplist-parser':
-        specifier: workspace:*
-        version: link:../bplist-parser
+        specifier: ^0.0.1
+        version: 0.0.1
 
 packages:
 
@@ -113,6 +113,9 @@ packages:
   '@babel/types@7.26.3':
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
     engines: {node: '>=6.9.0'}
+
+  '@ban12/bplist-parser@0.0.1':
+    resolution: {integrity: sha512-SvzG2KEF9nYB3dnWJbOYcIGYDcTTBBQax6WoRtU+hq+SaULCqkM9vlMnCX7mp1kL1c1hr1+GSnJPx8FhJ+VWYg==}
 
   '@changesets/apply-release-plan@7.0.7':
     resolution: {integrity: sha512-qnPOcmmmnD0MfMg9DjU1/onORFyRpDXkMMl2IJg9mECY6RnxL3wN0TCCc92b2sXt1jt8DgjAUUsZYGUGTdYIXA==}
@@ -2347,6 +2350,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@ban12/bplist-parser@0.0.1': {}
 
   '@changesets/apply-release-plan@7.0.7':
     dependencies:

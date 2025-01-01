@@ -1,8 +1,12 @@
 {
   "name": "@ban12/exif",
-  "private": true,
   "version": "0.0.0",
   "description": "A parser for EXIF",
+  "keywords": [
+    "EXIF",
+    "EXIF parser",
+    "ban12"
+  ],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -19,21 +23,28 @@
   "main": "dist/exif.js",
   "module": "dist/exif.mjs",
   "types": "dist/exif.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/exif.d.ts",
+      "import": "./dist/exif.mjs",
+      "require": "./dist/exif.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && pnpm build:cjs && pnpm build:esm && pnpm build:tsc",
-    "build:cjs": "swc src/exif.ts -o dist/exif.js -C module.type=commonjs",
-    "build:esm": "swc src/exif.ts -o dist/exif.mjs -C module.type=es6",
-    "build:tsc": "tsc --emitDeclarationOnly --outDir dist/",
+    "build": "pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "swc src -d dist --strip-leading-paths -C module.type=commonjs",
+    "build:esm": "swc src -d dist --strip-leading-paths -C module.type=es6 --out-file-extension mjs",
+    "postbuild": "tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "test": "vitest",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@ban12/bplist-parser": "workspace:*"
+    "@ban12/bplist-parser": "^0.0.1"
   }
 }

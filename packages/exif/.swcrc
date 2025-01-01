@@ -9,5 +9,6 @@
   "minify": true,
   "module": {
     "type": "es6"
-  }
+  },
+  "exclude": "src/(vite-env.d.ts|main.ts)"
 }

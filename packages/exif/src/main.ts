@@ -1,6 +1,6 @@
 import './style.css'
 
-import { Exif } from './exif.js'
+import Exif from './exif.js'
 
 const html = `
   <form>
