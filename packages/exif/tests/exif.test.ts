@@ -29,4 +29,21 @@ describe('exif', async () => {
       'CC7B5EDE-BA2E-4DD5-85EB-50D0E8F94800',
     )
   })
+
+  it('should support live photo tags', async () => {
+    const file = await readFile(
+      new URL('230708_TessSug_Demo-LA_BD_iV190163.mov', import.meta.url),
+    )
+    console.time('read mov')
+    const exif = new Exif(file.buffer as ArrayBuffer).read()
+    console.timeEnd('read mov')
+    expect(exif).toBeDefined()
+    expect(exif['com.apple.quicktime.live-photo.auto']).toBe(1)
+    expect(exif['com.apple.quicktime.live-photo.vitality-score']).toBe(
+      0.9398496150970459,
+    )
+    expect(
+      exif['com.apple.quicktime.live-photo.vitality-scoring-version'],
+    ).toBe(4)
+  })
 })

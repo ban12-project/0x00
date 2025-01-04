@@ -1,4 +1,5 @@
 import type { Processor } from './exif.js'
+import { readInt } from './util.js'
 
 interface Atom {
   size: number
@@ -23,7 +24,7 @@ export default class QuickTime implements Processor {
 
   private view: DataView<ArrayBuffer>
   private offset = 0
-  private tags: Record<string, string> = {}
+  private tags: Record<string, string | number> = {}
   static decoder = new TextDecoder()
 
   constructor(view: DataView<ArrayBuffer>) {
@@ -262,7 +263,7 @@ export default class QuickTime implements Processor {
   }
 
   private readMetadataTags() {
-    const tags: { key: string; value: string }[] = []
+    const tags: { key: string; value: string | number }[] = []
     let atom = this.readAtom()
     while (atom) {
       // mdta include ilst
@@ -295,8 +296,27 @@ export default class QuickTime implements Processor {
 
     let atom = this.readAtom()
     while (atom) {
-      const data = QuickTime.decoder.decode(atom.data.slice(16))
-      values.push(data)
+      const dataOffset = this.offset - atom.size + 8 // +8 skip ilst type + size 8 bytes
+      const type = this.view.getUint32(dataOffset + 8)
+      // const locale = atom.data.slice(12, 16)
+      const value = atom.data.slice(16)
+
+      switch (type) {
+        case 1: {
+          values.push(QuickTime.decoder.decode(value))
+          break
+        }
+        case 21:
+        case 22: {
+          values.push(readInt(new Uint8Array(value)))
+          break
+        }
+        case 23: {
+          values.push(this.view.getFloat32(dataOffset + 16))
+          break
+        }
+      }
+
       atom = this.readAtom()
     }
 
